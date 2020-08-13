@@ -1,0 +1,11 @@
+.list {
+  padding: 5px;
+  
+  &__top {
+    display: flex;
+  }
+
+  &__heading {
+    margin-right: auto;
+  }
+}
