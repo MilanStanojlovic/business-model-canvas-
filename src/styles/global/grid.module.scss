@@ -1,0 +1,13 @@
+.grid {
+  display: grid;
+  width: 1200px;
+  margin: 0 auto;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    margin: 0 20px;
+  }
+}

@@ -1,11 +1,40 @@
+@import '../../styles/variables/variables.scss';
+
 .list {
   padding: 5px;
-  
+  position: relative;
+  height: 100%;
+
   &__top {
     display: flex;
   }
 
   &__heading {
     margin-right: auto;
+  }
+
+  &__info {
+    color: $gray;
+    cursor: pointer;
+  }
+
+  &__add {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: $purple;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+  }
+
+  &:hover &__add {
+    visibility: visible;
   }
 }
