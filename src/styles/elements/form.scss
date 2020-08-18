@@ -1,0 +1,12 @@
+textarea {
+  border: 1px solid $lightGray;
+  border-radius: 5px;
+  width: 100%;
+  resize: none;
+  height: 80px;
+  font-size: 0.9rem;
+  padding: 5px;
+  &:focus {
+    outline: none;
+  }
+}
