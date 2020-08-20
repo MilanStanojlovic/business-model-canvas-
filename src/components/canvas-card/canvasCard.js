@@ -1,10 +1,11 @@
 import React from 'react';
 import style from './canvasCard.module.scss';
 
-const CanvasCard = () => {
+const CanvasCard = ({ content, id }) => {
   return (
     <div className={style.canvasCard}>
-      Canvas Card
+      {id}
+      {content}
     </div>
   )
 }

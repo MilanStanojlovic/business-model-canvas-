@@ -18,6 +18,22 @@
     cursor: pointer;
   }
 
+  &__content {
+    margin: 7px 0;
+    position: relative;
+    max-height: 95%;
+    overflow-y: scroll;
+    //Chrome
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    //Firefox
+    scrollbar-width: none;
+    //edge, IE
+    -ms-overflow-style: none;
+    border-radius: 10px;
+  }
+
   &__add {
     position: absolute;
     bottom: 5px;

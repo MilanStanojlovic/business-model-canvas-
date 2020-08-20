@@ -1,7 +1,9 @@
 import React, { useState, Fragment } from 'react';
-import style from './canvas.module.scss';
-import List from '../list/list';
 import { canvasList } from '../../enum/canvasList';
+import style from './canvas.module.scss';
+import { v4 as uuid4 } from 'uuid';
+
+import List from '../list/list';
 import Modal from '../modal/modal';
 
 const Canvas = () => {
@@ -18,7 +20,7 @@ const Canvas = () => {
   const [selectedList, setSelectedList] = useState(undefined);
 
 
-  const addElementHandler = (listName) => {
+  const showModalHandler = (listName) => {
     switch (listName) {
       case canvasList.KEY_PARTNERS: setSelectedList(canvasList.KEY_PARTNERS);
         break;
@@ -46,38 +48,67 @@ const Canvas = () => {
     setSelectedList(undefined);
   }
 
+  const addCardHandler = (value, list) => {
+    const card = { id: uuid4(), content: value };
+    switch (list) {
+      case canvasList.KEY_PARTNERS: setPartners(partners => [...partners, card]);
+        break;
+      case canvasList.KEY_ACTIVITIES: setActivities(activities => [...activities, card]);
+        break;
+      case canvasList.KEY_RESOURCES: setResources(resources => [...resources, card]);
+        break;
+      case canvasList.VALUE_PROPOSITION: setValues(values => [...values, card]);
+        break;
+      case canvasList.CUSTOMER_RELATIONSHIPS: setCustomerRelationships(customerRelationships => [...customerRelationships, card]);
+        break;
+      case canvasList.CHANELS: setChanels(chanels => [...chanels, card]);
+        break;
+      case canvasList.CUSTOMER_SEGMENTS: setCustomerSegments(customerSegments => [...customerSegments, card]);
+        break;
+      case canvasList.COST_STRUCTURE: setCostStructure(costStructure => [...costStructure, card]);
+        break;
+      case canvasList.REVENUE_STREAMS: setRevenueStreams(revenueStreams => [...revenueStreams, card]);
+        break;
+      default: throw new Error('Unknown list error.');
+    }
+
+
+
+    setSelectedList(undefined);
+  }
+
   return (
     <Fragment>
       <section className={style.canvas}>
         <div className={style.canvas__partners}>
-          <List name={canvasList.KEY_PARTNERS} addCard={addElementHandler} />
+          <List name={canvasList.KEY_PARTNERS} showModal={showModalHandler} list={partners} />
         </div>
         <div className={style.canvas__activities}>
-          <List name={canvasList.KEY_ACTIVITIES} addCard={addElementHandler} />
+          <List name={canvasList.KEY_ACTIVITIES} showModal={showModalHandler} list={activities} />
         </div>
         <div className={style.canvas__resources}>
-          <List name={canvasList.KEY_RESOURCES} addCard={addElementHandler} />
+          <List name={canvasList.KEY_RESOURCES} showModal={showModalHandler} list={resources} />
         </div>
-        <div className={style.canvas__value}>
-          <List name={canvasList.VALUE_PROPOSITION} addCard={addElementHandler} />
+        <div className={style.canvas__values}>
+          <List name={canvasList.VALUE_PROPOSITION} showModal={showModalHandler} list={values} />
         </div>
-        <div className={style.canvas__customerRelationship}>
-          <List name={canvasList.CUSTOMER_RELATIONSHIPS} addCard={addElementHandler} />
+        <div className={style.canvas__customerRelationships}>
+          <List name={canvasList.CUSTOMER_RELATIONSHIPS} showModal={showModalHandler} list={customerRelationships} />
         </div>
         <div className={style.canvas__chanels}>
-          <List name={canvasList.CHANELS} addCard={addElementHandler} />
+          <List name={canvasList.CHANELS} showModal={showModalHandler} list={chanels} />
         </div>
         <div className={style.canvas__customerSegments}>
-          <List name={canvasList.CUSTOMER_SEGMENTS} addCard={addElementHandler} />
+          <List name={canvasList.CUSTOMER_SEGMENTS} showModal={showModalHandler} list={customerSegments} />
         </div>
-        <div className={style.canvas__cost}>
-          <List name={canvasList.COST_STRUCTURE} addCard={addElementHandler} />
+        <div className={style.canvas__costStructure}>
+          <List name={canvasList.COST_STRUCTURE} showModal={showModalHandler} list={costStructure} />
         </div>
-        <div className={style.canvas__revenue}>
-          <List name={canvasList.REVENUE_STREAMS} addCard={addElementHandler} />
+        <div className={style.canvas__revenueStreams}>
+          <List name={canvasList.REVENUE_STREAMS} showModal={showModalHandler} list={revenueStreams} />
         </div>
       </section>
-      {selectedList ? <Modal list={selectedList} modalClosed={handleModalClose} /> : null}
+      {selectedList ? <Modal listName={selectedList} modalClosed={handleModalClose} addCard={addCardHandler} /> : null}
     </Fragment>
   )
 }
