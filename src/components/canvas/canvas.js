@@ -49,31 +49,31 @@ const Canvas = () => {
   }
 
   const addCardHandler = (value, list) => {
-    const card = { id: uuid4(), content: value };
-    switch (list) {
-      case canvasList.KEY_PARTNERS: setPartners(partners => [...partners, card]);
-        break;
-      case canvasList.KEY_ACTIVITIES: setActivities(activities => [...activities, card]);
-        break;
-      case canvasList.KEY_RESOURCES: setResources(resources => [...resources, card]);
-        break;
-      case canvasList.VALUE_PROPOSITION: setValues(values => [...values, card]);
-        break;
-      case canvasList.CUSTOMER_RELATIONSHIPS: setCustomerRelationships(customerRelationships => [...customerRelationships, card]);
-        break;
-      case canvasList.CHANELS: setChanels(chanels => [...chanels, card]);
-        break;
-      case canvasList.CUSTOMER_SEGMENTS: setCustomerSegments(customerSegments => [...customerSegments, card]);
-        break;
-      case canvasList.COST_STRUCTURE: setCostStructure(costStructure => [...costStructure, card]);
-        break;
-      case canvasList.REVENUE_STREAMS: setRevenueStreams(revenueStreams => [...revenueStreams, card]);
-        break;
-      default: throw new Error('Unknown list error.');
+    if (value) {
+      const card = { id: uuid4(), content: value };
+      
+      switch (list) {
+        case canvasList.KEY_PARTNERS: setPartners(partners => [...partners, card]);
+          break;
+        case canvasList.KEY_ACTIVITIES: setActivities(activities => [...activities, card]);
+          break;
+        case canvasList.KEY_RESOURCES: setResources(resources => [...resources, card]);
+          break;
+        case canvasList.VALUE_PROPOSITION: setValues(values => [...values, card]);
+          break;
+        case canvasList.CUSTOMER_RELATIONSHIPS: setCustomerRelationships(customerRelationships => [...customerRelationships, card]);
+          break;
+        case canvasList.CHANELS: setChanels(chanels => [...chanels, card]);
+          break;
+        case canvasList.CUSTOMER_SEGMENTS: setCustomerSegments(customerSegments => [...customerSegments, card]);
+          break;
+        case canvasList.COST_STRUCTURE: setCostStructure(costStructure => [...costStructure, card]);
+          break;
+        case canvasList.REVENUE_STREAMS: setRevenueStreams(revenueStreams => [...revenueStreams, card]);
+          break;
+        default: throw new Error('Unknown list error.');
+      }
     }
-
-
-
     setSelectedList(undefined);
   }
 
