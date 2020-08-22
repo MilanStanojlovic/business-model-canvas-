@@ -4,7 +4,6 @@
   margin: 15px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  //TODO: add minmax to prewent blowout
   grid-template-rows: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 2fr);
   gap: 10px;
   height: calc(100vh - 80px - 20px);

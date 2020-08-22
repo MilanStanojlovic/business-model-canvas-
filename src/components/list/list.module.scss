@@ -7,6 +7,7 @@
 
   &__top {
     display: flex;
+    margin-bottom: 5px;
   }
 
   &__heading {
@@ -19,17 +20,12 @@
   }
 
   &__content {
-    margin: 7px 0;
     position: relative;
-    max-height: 95%;
     overflow-y: scroll;
-    //Chrome
     &::-webkit-scrollbar {
       display: none;
     }
-    //Firefox
     scrollbar-width: none;
-    //edge, IE
     -ms-overflow-style: none;
     border-radius: 10px;
   }
@@ -53,4 +49,16 @@
   &:hover &__add {
     visibility: visible;
   }
+}
+
+.list_md {
+  max-height: 91%;
+}
+
+.list_lg {
+  max-height: 95%;
+}
+
+.list_sm {
+  max-height: 82%;
 }
