@@ -1,0 +1,15 @@
+.sideBar {
+  background-color: orange;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 90%;
+  max-width: 350px;
+  height: 100vh;
+  z-index: 100;
+  transform: translateX(100%);
+}
+
+.open {
+  transform: translateX(0);
+}
