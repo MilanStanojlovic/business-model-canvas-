@@ -6,7 +6,7 @@ import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import CanvasCard from '../canvas-card/canvasCard';
 import { canvasList } from '../../enum/canvasList';
 
-const List = ({ name, showModal, list }) => {
+const List = React.memo(({ name, showModal, list }) => {
   let content = null;
   let listSize = style.list_md;
 
@@ -36,6 +36,6 @@ const List = ({ name, showModal, list }) => {
       <div className={style.list__add} onClick={showModal.bind(this, name)}><FontAwesomeIcon icon={faPlus} size="lg" /></div>
     </section>
   );
-}
+})
 
 export default List;

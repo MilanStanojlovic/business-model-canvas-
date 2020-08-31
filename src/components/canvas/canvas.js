@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useCallback } from 'react';
 import { canvasList } from '../../enum/canvasList';
 import style from './canvas.module.scss';
 import { v4 as uuid4 } from 'uuid';
@@ -20,7 +20,7 @@ const Canvas = () => {
   const [selectedList, setSelectedList] = useState(undefined);
 
 
-  const showModalHandler = (listName) => {
+  const showModalHandler = useCallback((listName) => {
     switch (listName) {
       case canvasList.KEY_PARTNERS: setSelectedList(canvasList.KEY_PARTNERS);
         break;
@@ -42,16 +42,16 @@ const Canvas = () => {
         break;
       default: setSelectedList(undefined);
     }
-  }
+  }, [setSelectedList])
 
   const handleModalClose = () => {
     setSelectedList(undefined);
   }
 
-  const addCardHandler = (value, list) => {
+  const addCardHandler = useCallback((value, list) => {
     if (value) {
       const card = { id: uuid4(), content: value };
-      
+
       switch (list) {
         case canvasList.KEY_PARTNERS: setPartners(partners => [...partners, card]);
           break;
@@ -75,7 +75,15 @@ const Canvas = () => {
       }
     }
     setSelectedList(undefined);
-  }
+  }, [setPartners,
+    setActivities,
+    setResources,
+    setValues,
+    setCustomerRelationships,
+    setChanels,
+    setCustomerSegments,
+    setCostStructure,
+    setRevenueStreams]);
 
   return (
     <Fragment>
