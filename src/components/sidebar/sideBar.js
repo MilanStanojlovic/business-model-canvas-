@@ -1,6 +1,10 @@
 import React from 'react';
 import style from './sideBar.module.scss';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
+
+
 const SideBar = ({ toggle, isOpen }) => {
   // SIDEBAR OF CANVAS WITH LIST OF PREVIOUSLY CREATED CANVSES
   let openSidebar;
@@ -9,10 +13,9 @@ const SideBar = ({ toggle, isOpen }) => {
   }
   return (
     <aside className={`${style.sideBar} ${openSidebar}`} >
-      Canvas-list
-      <p onClick={toggle}>
-        Close Sidebar
-      </p>
+      <div className={`${style.sideBar__close}`}>
+        <FontAwesomeIcon icon={faTimesCircle} size="lg" className="icon" onClick={toggle} />
+      </div>
     </aside>
   )
 }
