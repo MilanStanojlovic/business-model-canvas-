@@ -7,20 +7,34 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import Sidebar from '../sidebar/sideBar';
 import Backdrop from '../backdrop/backdrop';
+import Auth from '../auth/auth';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showAuth, setShowAuth] = useState(true);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen)
   }
 
+  const toggleAuth = () => {
+    setShowAuth(!showAuth);
+  }
+
   let sidebar;
   let backDrop;
+  let auth;
   if (isOpen) {
     sidebar = <Sidebar toggle={toggleSidebar} isOpen={isOpen} />;
     backDrop = <Backdrop toggle={toggleSidebar} />;
   }
+
+  if (showAuth) {
+    auth = <Auth />;
+    backDrop = <Backdrop />;
+    // console.log('Display auth');
+  }
+
   return (
     <header className={style.header}>
       <div className="grid">
@@ -29,12 +43,13 @@ const Header = () => {
         </span>
         <nav className={style.navigation}>
           <ul>
-            <li><FontAwesomeIcon icon={faCloudDownloadAlt} size="lg" /></li>
+            <li><FontAwesomeIcon icon={faCloudDownloadAlt} size="lg" onClick={toggleAuth} /></li>
             <li><FontAwesomeIcon icon={faUser} size="lg" onClick={toggleSidebar} /></li>
           </ul>
         </nav>
       </div>
       {sidebar}
+      {auth}
       {backDrop}
     </header>
   )

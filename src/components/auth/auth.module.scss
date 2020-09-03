@@ -1,0 +1,14 @@
+@import '../../styles/variables/variables.scss';
+
+.auth {
+  position: fixed;
+  width: 450px;
+  // height: 300px;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $white;
+  z-index: 100;
+  border-radius: 15px;
+  padding: 10px;
+}
