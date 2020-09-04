@@ -11,7 +11,7 @@ import Auth from '../auth/auth';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showAuth, setShowAuth] = useState(true);
+  const [showAuth, setShowAuth] = useState(false);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen)
