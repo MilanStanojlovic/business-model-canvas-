@@ -31,7 +31,7 @@ const Header = () => {
 
   if (showAuth) {
     auth = <Auth toggle={toggleAuth} />;
-    backDrop = <Backdrop />;
+    backDrop = <Backdrop toggle={toggleAuth} />;
   }
 
   return (
