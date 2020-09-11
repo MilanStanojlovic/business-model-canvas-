@@ -30,9 +30,8 @@ const Header = () => {
   }
 
   if (showAuth) {
-    auth = <Auth />;
+    auth = <Auth toggle={toggleAuth} />;
     backDrop = <Backdrop />;
-    // console.log('Display auth');
   }
 
   return (
