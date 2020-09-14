@@ -19,7 +19,7 @@ const SideBar = ({ toggle, isOpen }) => {
 
   const logOutHandler = () => {
     auth.signOut().then(response => {
-      console.log('User signed out', response);
+      // console.log('User signed out', response);
       setUser('');
       toggle();
 

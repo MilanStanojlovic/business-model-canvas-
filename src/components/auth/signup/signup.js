@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { auth } from '../../../firebase';
+import { auth, db } from '../../../firebase';
 
 const SignUp = ({ toggleAuth, toggle }) => {
   const [fullName, setFullName] = useState('');
@@ -15,7 +15,18 @@ const SignUp = ({ toggleAuth, toggle }) => {
 
 
     auth.createUserWithEmailAndPassword(email, password).then(response => {
-      console.log(response);
+      // console.log(response);
+      response.user.updateProfile({
+        displayName: fullName
+      })
+
+      db.collection('users').doc(response.user.uid).set({
+        email,
+        fullName,
+      }).then(() => { }, error => {
+        console.log('error collection', error)
+      });
+
       toggle();
     }, error => {
       console.log(error);
