@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../../firebase';
 
-const SignIn = ({ toggleAuth }) => {
+const SignIn = ({ toggleAuth, toggle }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //TODO: 
@@ -9,10 +9,11 @@ const SignIn = ({ toggleAuth }) => {
   //error handling
 
   const signInHandler = () => {
-    console.log(email, password);
+    // console.log(email, password);
 
     auth.signInWithEmailAndPassword(email, password).then(response => {
-      console.log(response);
+      console.log('from signin', response);
+      toggle();
     }, error => {
       console.log(error);
     });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../../firebase';
 
-const SignUp = ({ toggleAuth }) => {
+const SignUp = ({ toggleAuth, toggle }) => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,12 +10,13 @@ const SignUp = ({ toggleAuth }) => {
   //input validation
 
   const registrationHandler = () => {
-    console.log(fullName, email, password);
+    // console.log(fullName, email, password);
     // const auth = firebase.auth();
 
 
     auth.createUserWithEmailAndPassword(email, password).then(response => {
-      console.log(response)
+      console.log(response);
+      toggle();
     }, error => {
       console.log(error);
     });

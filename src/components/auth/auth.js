@@ -17,7 +17,7 @@ const Auth = ({ toggle }) => {
   return (
     <div className={style.auth}>
       <FontAwesomeIcon icon={faTimesCircle} size="lg" className="icon" onClick={toggle} />
-      {showRegistration ? <SignUp toggleAuth={handleToggleAuth} /> : <SignIn toggleAuth={handleToggleAuth} />}
+      {showRegistration ? <SignUp toggleAuth={handleToggleAuth} toggle={toggle} /> : <SignIn toggleAuth={handleToggleAuth} toggle={toggle} />}
     </div>
   )
 }
