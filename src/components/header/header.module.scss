@@ -1,26 +1,40 @@
 @import '../../styles/variables/variables.scss';
 
 .header {
-  background-color: cornflowerblue;
+  background-color: $blue;
   display: flex;
   height: 70px;
-  align-items: center;
 
   &__logo {
     grid-column: 1/2;
+    align-self: center;
   }
 }
 
 .navigation {
   grid-column: 3/-1;
   margin-left: auto;
+  align-self: center;
   ul {
     display: flex;
     li {
+      align-self: center;
       list-style-type: none;
       margin-left: 30px;
       cursor: pointer;
       color: $white;
+    }
+  }
+
+  &__cta {
+    padding: 5px 15px;
+    background-color: $blue;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid $white;
+    svg {
+      margin-right: 10px;
     }
   }
 }

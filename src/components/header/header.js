@@ -3,6 +3,7 @@ import style from './header.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudDownloadAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import Sidebar from '../sidebar/sideBar';
@@ -37,16 +38,16 @@ const Header = () => {
   }
 
   return (
-    <header className={style.header}>
+    <header className={`${style.header}`}>
       <div className="grid">
         <span className={style.header__logo}>
-          Logo
+          BusinessModel
         </span>
         <nav className={style.navigation}>
           <ul>
-            <li>{user}</li>
-            <li><FontAwesomeIcon icon={faCloudDownloadAlt} size="lg" onClick={toggleAuth} /></li>
-            <li><FontAwesomeIcon icon={faUser} size="lg" onClick={toggleSidebar} /></li>
+            {!user && <li className={style.navigation__cta} onClick={toggleAuth}><FontAwesomeIcon icon={faUser} size="sm" />Sign In</li>}
+            {user && <li className={style.navigation__cta} ><FontAwesomeIcon icon={faCloudDownloadAlt} size="sm" /> Save Canvas</li>}
+            {user && <li><FontAwesomeIcon icon={faBars} size="lg" onClick={toggleSidebar} /></li>}
           </ul>
         </nav>
       </div>
