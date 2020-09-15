@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 
 import { UserContext } from '../context/UserContext';
+import UserCard from '../userCard/userCard';
 
 
 const SideBar = ({ toggle, isOpen }) => {
@@ -18,11 +19,9 @@ const SideBar = ({ toggle, isOpen }) => {
   }
 
   const logOutHandler = () => {
-    auth.signOut().then(response => {
-      // console.log('User signed out', response);
-      setUser('');
+    auth.signOut().then(() => {
+      setUser(null);
       toggle();
-
     }, error => {
       console.log(error);
     });
@@ -34,7 +33,8 @@ const SideBar = ({ toggle, isOpen }) => {
         <FontAwesomeIcon icon={faTimesCircle} size="lg" className="icon" onClick={toggle} />
       </div>
       <div>
-        <div className="btn btn-secondary">{user}</div>
+        {/* {user ? <div className="btn btn-secondary">{user.email} {user.displayName}</div> : <p>login</p>} */}
+        {user && <UserCard email={user.email} displayName={user.displayName} />}
         <div className="btn btn-secondary">Settings</div>
         <div className="btn btn-secondary">Dark Mode</div>
         <div className="btn btn-secondary" onClick={logOutHandler}>Log Out</div>

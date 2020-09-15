@@ -9,10 +9,7 @@ const SignIn = ({ toggleAuth, toggle }) => {
   //error handling
 
   const signInHandler = () => {
-    // console.log(email, password);
-
-    auth.signInWithEmailAndPassword(email, password).then(response => {
-      console.log('from signin', response);
+    auth.signInWithEmailAndPassword(email, password).then(() => {
       toggle();
     }, error => {
       console.log(error);

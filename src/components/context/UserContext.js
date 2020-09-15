@@ -5,15 +5,14 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   // TODO: 
-  // CREATE USER OBJECT WITH EMAIL AND PASSWORD 
-  //OPTIONAL: PHOTO
-  const [user, setUser] = useState('');
+  // User photo?
+  const [user, setUser] = useState({});
 
   useEffect(() => {
+    setUser(null);
     auth.onAuthStateChanged(user => {
-      console.log('from context', user);
       if (user) {
-        setUser(user.email);
+        setUser({ email: user.email, displayName: user.displayName });
       }
     });
   }, [])
