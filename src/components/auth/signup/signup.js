@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../../firebase';
 
-const SignUp = ({ toggleAuth, toggle }) => {
+const SignUp = ({ toggle }) => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,23 +36,20 @@ const SignUp = ({ toggleAuth, toggle }) => {
 
 
   return (
-    <>
-      <div className="form">
-        <h2 className="form__header">Join Business Model</h2>
-        <p className="form__text">Sign up and create your models!</p>
-        <div>
-          <input type="text" placeholder="Full Name" value={fullName} onChange={(event) => { setFullName(event.target.value) }} />
-        </div>
-        <div>
-          <input type="email" placeholder="Email" value={email} onChange={(event) => { setEmail(event.target.value) }} />
-        </div>
-        <div>
-          <input type="password" placeholder="Password" value={password} onChange={(event) => { setPassword(event.target.value) }} />
-        </div>
-        <button className="btn btn-primary" onClick={registrationHandler}>Sign Up</button>
+    <form className="form">
+      <h2 className="form__header">Join Business Model</h2>
+      <p className="form__text">Sign up and create your models!</p>
+      <div>
+        <input type="text" placeholder="Full Name" value={fullName} onChange={(event) => { setFullName(event.target.value) }} />
       </div>
-      <p className="form__text">Already have an account? <span className="blue-text icon" onClick={toggleAuth}>Sign in.</span></p>
-    </>
+      <div>
+        <input type="email" placeholder="Email" value={email} onChange={(event) => { setEmail(event.target.value) }} />
+      </div>
+      <div>
+        <input type="password" placeholder="Password" value={password} onChange={(event) => { setPassword(event.target.value) }} />
+      </div>
+      <button className="btn btn-primary" onClick={registrationHandler}>Sign Up</button>
+    </form>
   )
 }
 
