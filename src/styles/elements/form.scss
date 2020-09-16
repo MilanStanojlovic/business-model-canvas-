@@ -26,6 +26,15 @@ textarea {
     color: $gray;
     margin-bottom: 25px;
   }
+
+  &__error {
+    color: red;
+    font-size: 0.9rem;
+  }
+
+  &__invalid {
+    border: 1px solid red;
+  }
 }
 
 textarea {

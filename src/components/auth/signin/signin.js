@@ -1,33 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { auth } from '../../../firebase';
+import useForm from '../../../hooks/useForm';
 
 const SignIn = ({ toggle }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  //TODO: 
-  //input valdidation
-  //error handling
 
   const signInHandler = () => {
-    auth.signInWithEmailAndPassword(email, password).then(() => {
+    auth.signInWithEmailAndPassword(values.email, values.password).then(() => {
       toggle();
     }, error => {
       console.log(error);
     });
   }
 
+  const signInInputs = { email: '', password: '' };
+  const { values, handleChange, handleSubmit } = useForm(signInHandler, signInInputs, false);
+
 
   return (
-    <form className="form">
+    <form className="form" noValidate>
       <h2 className="form__header">Welcome Back</h2>
       <p className="form__text">Sign in and create canvases!</p>
       <div>
-        <input type="email" placeholder="Email" value={email} onChange={event => { setEmail(event.target.value) }} />
+        <input type="email"
+          placeholder="Email"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+        />
       </div>
       <div>
-        <input type="password" placeholder="Password" value={password} onChange={event => { setPassword(event.target.value) }} />
+        <input type="password"
+          placeholder="Password"
+          name="password"
+          value={values.password}
+          onChange={handleChange} />
       </div>
-      <button className="btn btn-primary" onClick={signInHandler}>Sign In</button>
+      <button className="btn btn-primary" onClick={handleSubmit}>Sign In</button>
     </form>
   );
 
