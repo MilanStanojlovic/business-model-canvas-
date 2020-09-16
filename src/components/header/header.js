@@ -41,7 +41,7 @@ const Header = () => {
     <header className={`${style.header}`}>
       <div className="grid">
         <span className={style.header__logo}>
-          BusinessModel
+          <span className="logo">BusinessCanvas</span>
         </span>
         <nav className={style.navigation}>
           <ul>
