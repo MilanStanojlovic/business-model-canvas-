@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
-import { auth } from '../../firebase';
+import { auth } from '../firebase';
 
 export const UserContext = createContext();
 
@@ -12,10 +12,14 @@ export const UserProvider = ({ children }) => {
     setUser(null);
     auth.onAuthStateChanged(user => {
       if (user) {
-        setUser({ email: user.email, displayName: user.displayName });
+        setUser({
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName
+        });
       }
     });
-  }, [])
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
