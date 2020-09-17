@@ -6,7 +6,7 @@ import { auth } from '../../firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 import UserCard from '../userCard/userCard';
 
 
@@ -16,6 +16,8 @@ const SideBar = ({ toggle, isOpen }) => {
   let openSidebar;
   if (isOpen) {
     openSidebar = style.open;
+  } else {
+    openSidebar = '';
   }
 
   const logOutHandler = () => {

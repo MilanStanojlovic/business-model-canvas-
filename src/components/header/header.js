@@ -9,7 +9,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Sidebar from '../sidebar/sideBar';
 import Backdrop from '../backdrop/backdrop';
 import Auth from '../auth/auth';
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,11 +24,10 @@ const Header = () => {
     setShowAuth(!showAuth);
   }
 
-  let sidebar;
+
   let backDrop;
   let auth;
   if (isOpen) {
-    sidebar = <Sidebar toggle={toggleSidebar} isOpen={isOpen} />;
     backDrop = <Backdrop toggle={toggleSidebar} />;
   }
 
@@ -51,7 +50,7 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      {sidebar}
+      <Sidebar toggle={toggleSidebar} isOpen={isOpen} />
       {auth}
       {backDrop}
     </header>
