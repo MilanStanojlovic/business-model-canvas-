@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.module.scss';
 import BusinessModel from '../business-model/businessModel';
-import { UserProvider } from '../context/UserContext';
+import { UserProvider } from '../../context/UserContext';
 // import { UserContext } from '../context/UserContext';
 
 function App() {
