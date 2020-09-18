@@ -1,4 +1,4 @@
-export const canvasList = {
+export const canvasElements = {
   KEY_PARTNERS: 'Key Partners',
   KEY_ACTIVITIES: 'Key Activities',
   KEY_RESOURCES: 'Key Resources',
@@ -9,3 +9,6 @@ export const canvasList = {
   COST_STRUCTURE: 'Cost structure',
   REVENUE_STREAMS: 'Revenue Streams'
 }
+
+//TODO:
+//add list explenations
