@@ -25,4 +25,20 @@
     color: $gray;
     cursor: pointer;
   }
+
+  &__colors {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  &__color {
+    flex: 1;
+    height: 15px;
+    margin-right: 3px;
+    // background-color: blueviolet;
+    cursor: pointer;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
 }
