@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useCallback } from 'react';
-import { canvasList } from '../../enum/canvasList';
+import { canvasElements } from '../../enum/canvas';
 import style from './canvas.module.scss';
 import { v4 as uuid4 } from 'uuid';
 
@@ -22,23 +22,23 @@ const Canvas = () => {
 
   const showModalHandler = useCallback((listName) => {
     switch (listName) {
-      case canvasList.KEY_PARTNERS: setSelectedList(canvasList.KEY_PARTNERS);
+      case canvasElements.KEY_PARTNERS: setSelectedList(canvasElements.KEY_PARTNERS);
         break;
-      case canvasList.KEY_ACTIVITIES: setSelectedList(canvasList.KEY_ACTIVITIES);
+      case canvasElements.KEY_ACTIVITIES: setSelectedList(canvasElements.KEY_ACTIVITIES);
         break;
-      case canvasList.KEY_RESOURCES: setSelectedList(canvasList.KEY_RESOURCES);
+      case canvasElements.KEY_RESOURCES: setSelectedList(canvasElements.KEY_RESOURCES);
         break;
-      case canvasList.VALUE_PROPOSITION: setSelectedList(canvasList.VALUE_PROPOSITION)
+      case canvasElements.VALUE_PROPOSITION: setSelectedList(canvasElements.VALUE_PROPOSITION)
         break;
-      case canvasList.CUSTOMER_RELATIONSHIPS: setSelectedList(canvasList.CUSTOMER_RELATIONSHIPS);
+      case canvasElements.CUSTOMER_RELATIONSHIPS: setSelectedList(canvasElements.CUSTOMER_RELATIONSHIPS);
         break;
-      case canvasList.CHANELS: setSelectedList(canvasList.CHANELS)
+      case canvasElements.CHANELS: setSelectedList(canvasElements.CHANELS)
         break;
-      case canvasList.CUSTOMER_SEGMENTS: setSelectedList(canvasList.CUSTOMER_SEGMENTS);
+      case canvasElements.CUSTOMER_SEGMENTS: setSelectedList(canvasElements.CUSTOMER_SEGMENTS);
         break;
-      case canvasList.COST_STRUCTURE: setSelectedList(canvasList.COST_STRUCTURE);
+      case canvasElements.COST_STRUCTURE: setSelectedList(canvasElements.COST_STRUCTURE);
         break;
-      case canvasList.REVENUE_STREAMS: setSelectedList(canvasList.REVENUE_STREAMS);
+      case canvasElements.REVENUE_STREAMS: setSelectedList(canvasElements.REVENUE_STREAMS);
         break;
       default: setSelectedList(undefined);
     }
@@ -48,28 +48,28 @@ const Canvas = () => {
     setSelectedList(undefined);
   }
 
-  const addCardHandler = useCallback((value, list) => {
+  const addCardHandler = useCallback((value, list, color) => {
     if (value) {
-      const card = { id: uuid4(), content: value };
+      const card = { id: uuid4(), content: value, color: color };
 
       switch (list) {
-        case canvasList.KEY_PARTNERS: setPartners(partners => [...partners, card]);
+        case canvasElements.KEY_PARTNERS: setPartners(partners => [...partners, card]);
           break;
-        case canvasList.KEY_ACTIVITIES: setActivities(activities => [...activities, card]);
+        case canvasElements.KEY_ACTIVITIES: setActivities(activities => [...activities, card]);
           break;
-        case canvasList.KEY_RESOURCES: setResources(resources => [...resources, card]);
+        case canvasElements.KEY_RESOURCES: setResources(resources => [...resources, card]);
           break;
-        case canvasList.VALUE_PROPOSITION: setValues(values => [...values, card]);
+        case canvasElements.VALUE_PROPOSITION: setValues(values => [...values, card]);
           break;
-        case canvasList.CUSTOMER_RELATIONSHIPS: setCustomerRelationships(customerRelationships => [...customerRelationships, card]);
+        case canvasElements.CUSTOMER_RELATIONSHIPS: setCustomerRelationships(customerRelationships => [...customerRelationships, card]);
           break;
-        case canvasList.CHANELS: setChanels(chanels => [...chanels, card]);
+        case canvasElements.CHANELS: setChanels(chanels => [...chanels, card]);
           break;
-        case canvasList.CUSTOMER_SEGMENTS: setCustomerSegments(customerSegments => [...customerSegments, card]);
+        case canvasElements.CUSTOMER_SEGMENTS: setCustomerSegments(customerSegments => [...customerSegments, card]);
           break;
-        case canvasList.COST_STRUCTURE: setCostStructure(costStructure => [...costStructure, card]);
+        case canvasElements.COST_STRUCTURE: setCostStructure(costStructure => [...costStructure, card]);
           break;
-        case canvasList.REVENUE_STREAMS: setRevenueStreams(revenueStreams => [...revenueStreams, card]);
+        case canvasElements.REVENUE_STREAMS: setRevenueStreams(revenueStreams => [...revenueStreams, card]);
           break;
         default: throw new Error('Unknown list error.');
       }
@@ -89,31 +89,31 @@ const Canvas = () => {
     <Fragment>
       <section className={style.canvas}>
         <div className={style.canvas__partners}>
-          <List name={canvasList.KEY_PARTNERS} showModal={showModalHandler} list={partners} />
+          <List name={canvasElements.KEY_PARTNERS} showModal={showModalHandler} list={partners} />
         </div>
         <div className={style.canvas__activities}>
-          <List name={canvasList.KEY_ACTIVITIES} showModal={showModalHandler} list={activities} />
+          <List name={canvasElements.KEY_ACTIVITIES} showModal={showModalHandler} list={activities} />
         </div>
         <div className={style.canvas__resources}>
-          <List name={canvasList.KEY_RESOURCES} showModal={showModalHandler} list={resources} />
+          <List name={canvasElements.KEY_RESOURCES} showModal={showModalHandler} list={resources} />
         </div>
         <div className={style.canvas__values}>
-          <List name={canvasList.VALUE_PROPOSITION} showModal={showModalHandler} list={values} />
+          <List name={canvasElements.VALUE_PROPOSITION} showModal={showModalHandler} list={values} />
         </div>
         <div className={style.canvas__customerRelationships}>
-          <List name={canvasList.CUSTOMER_RELATIONSHIPS} showModal={showModalHandler} list={customerRelationships} />
+          <List name={canvasElements.CUSTOMER_RELATIONSHIPS} showModal={showModalHandler} list={customerRelationships} />
         </div>
         <div className={style.canvas__chanels}>
-          <List name={canvasList.CHANELS} showModal={showModalHandler} list={chanels} />
+          <List name={canvasElements.CHANELS} showModal={showModalHandler} list={chanels} />
         </div>
         <div className={style.canvas__customerSegments}>
-          <List name={canvasList.CUSTOMER_SEGMENTS} showModal={showModalHandler} list={customerSegments} />
+          <List name={canvasElements.CUSTOMER_SEGMENTS} showModal={showModalHandler} list={customerSegments} />
         </div>
         <div className={style.canvas__costStructure}>
-          <List name={canvasList.COST_STRUCTURE} showModal={showModalHandler} list={costStructure} />
+          <List name={canvasElements.COST_STRUCTURE} showModal={showModalHandler} list={costStructure} />
         </div>
         <div className={style.canvas__revenueStreams}>
-          <List name={canvasList.REVENUE_STREAMS} showModal={showModalHandler} list={revenueStreams} />
+          <List name={canvasElements.REVENUE_STREAMS} showModal={showModalHandler} list={revenueStreams} />
         </div>
       </section>
       {selectedList ? <Modal listName={selectedList} modalClosed={handleModalClose} addCard={addCardHandler} /> : null}

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import CanvasCard from '../canvas-card/canvasCard';
-import { canvasList } from '../../enum/canvasList';
+import { canvasElements } from '../../enum/canvas';
 
 const List = React.memo(({ name, showModal, list }) => {
   let content = null;
@@ -12,13 +12,13 @@ const List = React.memo(({ name, showModal, list }) => {
 
   if (list) {
     content = list.map(element => {
-      return <CanvasCard key={element.id} id={element.id} content={element.content} />
+      return <CanvasCard key={element.id} id={element.id} content={element.content} color={element.color} />
     })
   }
 
-  if (name === canvasList.CUSTOMER_SEGMENTS || name === canvasList.VALUE_PROPOSITION || name === canvasList.KEY_PARTNERS) {
+  if (name === canvasElements.CUSTOMER_SEGMENTS || name === canvasElements.VALUE_PROPOSITION || name === canvasElements.KEY_PARTNERS) {
     listSize = style.list_lg;
-  } else if (name === canvasList.REVENUE_STREAMS || name === canvasList.COST_STRUCTURE) {
+  } else if (name === canvasElements.REVENUE_STREAMS || name === canvasElements.COST_STRUCTURE) {
     listSize = style.list_sm;
   }
 
