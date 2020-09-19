@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { auth } from '../../../firebase';
 import useForm from '../../../hooks/useForm';
 
 const SignIn = ({ toggle }) => {
+  const [error, setError] = useState('');
 
   const signInHandler = () => {
     auth.signInWithEmailAndPassword(values.email, values.password).then(() => {
       toggle();
     }, error => {
-      console.log(error);
+      setError(error.message);
     });
   }
 
@@ -20,6 +21,7 @@ const SignIn = ({ toggle }) => {
     <form className="form" noValidate>
       <h2 className="form__header">Welcome Back</h2>
       <p className="form__text">Sign in and create canvases!</p>
+      {error && <p className="form__error">{error}</p>}
       <div>
         <input type="email"
           placeholder="Email"

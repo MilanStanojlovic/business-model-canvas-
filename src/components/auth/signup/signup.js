@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { auth, db } from '../../../firebase';
 import useForm from '../../../hooks/useForm';
 
 const SignUp = ({ toggle }) => {
+  const [error, setError] = useState('');
 
   const signUpHandler = () => {
     auth.createUserWithEmailAndPassword(values.email, values.password).then(response => {
@@ -13,13 +14,11 @@ const SignUp = ({ toggle }) => {
       db.collection('users').doc(response.user.uid).set({
         email: values.email,
         fullName: values.fullName
-      }).then(() => { }, error => {
-        console.log('error collection', error);
-      });
+      })
 
       toggle();
     }, error => {
-      console.log(error);
+      setError(error.message);
     });
   }
 
@@ -28,8 +27,9 @@ const SignUp = ({ toggle }) => {
 
   return (
     <form className="form" noValidate>
-      <h2 className="form__header">Join Business Model</h2>
+      <h2 className="form__header">Join Business Canvas</h2>
       <p className="form__text">Sign up and create your models!</p>
+      {error && <p className="form__error">{error}</p>}
       <div>
         <input type="text"
           placeholder="Full Name"
