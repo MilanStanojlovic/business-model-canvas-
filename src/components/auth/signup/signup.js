@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../../firebase';
 import useForm from '../../../hooks/useForm';
+import { form } from '../../../enum/form';
 
 const SignUp = ({ toggle }) => {
   const [error, setError] = useState('');
@@ -23,7 +24,7 @@ const SignUp = ({ toggle }) => {
   }
 
   const signupFields = { fullName: '', email: '', password: '' };
-  const { values, handleChange, handleSubmit, errors } = useForm(signUpHandler, signupFields, true);
+  const { values, handleChange, handleSubmit, errors } = useForm(signUpHandler, signupFields, form.SIGN_UP);
 
   return (
     <form className="form" noValidate>
