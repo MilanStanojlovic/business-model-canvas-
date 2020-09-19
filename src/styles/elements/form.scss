@@ -16,7 +16,6 @@ textarea {
 }
 
 .form {
-  margin-top: 15px;
   &__header,
   &__text {
     text-align: center;
@@ -28,12 +27,12 @@ textarea {
   }
 
   &__error {
-    color: red;
+    color: $red;
     font-size: 0.9rem;
   }
 
   &__invalid {
-    border: 1px solid red;
+    border: 1px solid $red;
   }
 }
 
