@@ -17,12 +17,10 @@ const Modal = ({ listName, modalClosed, addCard }) => {
   }
 
   return (
-    <div className={`${style.modal} shadow`}>
-      <div className={style.modal__controls}>
+    <div className="modal shadow">
+      <div className="modal__controls">
         <p>{listName}</p>
-        <span className={style.modal__close} onClick={modalClosed}>
-          <FontAwesomeIcon icon={faTimesCircle} size="lg" />
-        </span>
+        <FontAwesomeIcon icon={faTimesCircle} size="lg" className="modal__close icon" onClick={modalClosed} />
       </div>
       <div className={style.modal__colors}>
         {colors.map((color) => {
@@ -34,7 +32,7 @@ const Modal = ({ listName, modalClosed, addCard }) => {
           )
         })}
       </div>
-      <div className={style.modal__input}>
+      <div className="modal__input">
         <textarea placeholder="Card content" value={value} style={{ borderColor: `#${selectedColor}` }} onChange={(event) => setValue(event.target.value)}></textarea>
       </div>
       <button className="btn btn-primary" onClick={addCard.bind(this, value, listName, selectedColor)}>Add Card</button>

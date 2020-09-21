@@ -1,0 +1,23 @@
+.modal {
+  background-color: $white;
+  border-radius: 10px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  padding: 5px;
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input {
+    margin: 10px 0;
+  }
+
+  &__close {
+    color: $gray;
+  }
+}
