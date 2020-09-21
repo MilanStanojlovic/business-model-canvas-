@@ -1,21 +1,32 @@
-import React, { useState, Fragment, useCallback } from 'react';
+import React, { useState, Fragment, useCallback, useContext } from 'react';
 import { canvasElements } from '../../enum/canvas';
 import style from './canvas.module.scss';
 import { v4 as uuid4 } from 'uuid';
 
 import List from '../list/list';
 import Modal from '../modal/modal';
+import { CanvasContext } from '../../context/CanvasContext';
 
 const Canvas = () => {
-  const [partners, setPartners] = useState([]);
-  const [activities, setActivities] = useState([]);
-  const [resources, setResources] = useState([]);
-  const [values, setValues] = useState([]);
-  const [customerRelationships, setCustomerRelationships] = useState([]);
-  const [chanels, setChanels] = useState([]);
-  const [customerSegments, setCustomerSegments] = useState([]);
-  const [costStructure, setCostStructure] = useState([]);
-  const [revenueStreams, setRevenueStreams] = useState([]);
+  const { 
+    partners,
+    setPartners,
+    activities,
+    setActivities,
+    resources,
+    setResources,
+    values,
+    setValues,
+    customerRelationships,
+    setCustomerRelationships,
+    chanels,
+    setChanels,
+    customerSegments,
+    setCustomerSegments,
+    costStructure,
+    setCostStructure,
+    revenueStreams,
+    setRevenueStreams } = useContext(CanvasContext);
 
   const [selectedList, setSelectedList] = useState(undefined);
 

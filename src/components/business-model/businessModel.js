@@ -2,21 +2,20 @@ import React, { Fragment } from 'react';
 import style from './businessModel.module.scss';
 import Canvas from '../canvas/canvas';
 import Header from '../header/header';
-// import CanvasList from '../canvas-list/canvasList';
+import { CanvasProvider } from '../../context/CanvasContext';
+
 
 const BusinessModel = () => {
   return (
     <Fragment>
-      <Header />
-      <div className={`${style.businessModel}`}>
-        {/* TODO: MOVE TO SIDEBAR */}
-        {/* <div className={style.businessModel__canvasList}>
-        <CanvasList />
-      </div> */}
-        <div className={style.businessModel__canvas}>
-          <Canvas />
+      <CanvasProvider>
+        <Header />
+        <div className={`${style.businessModel}`}>
+          <div className={style.businessModel__canvas}>
+            <Canvas />
+          </div>
         </div>
-      </div>
+      </CanvasProvider>
     </Fragment>
   )
 }
