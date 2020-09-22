@@ -14,4 +14,9 @@
   &__message {
     margin-top: 10px;
   }
+
+  &__close {
+    display: flex;
+    margin-left: auto;
+  }
 }

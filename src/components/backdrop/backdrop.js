@@ -1,9 +1,11 @@
 import React from 'react'
 import style from './backdrop.module.scss';
 
-const Backdrop = ({ toggle }) => {
+const Backdrop = ({ toggle, children }) => {
   return (
-    <div className={style.backdrop} onClick={toggle}></div>
+    <div className={style.backdrop} onClick={toggle}>
+      {children}
+    </div>
   )
 }
 

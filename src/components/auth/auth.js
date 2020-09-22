@@ -16,7 +16,7 @@ const Auth = ({ toggle }) => {
 
   return (
     <div className={style.auth}>
-      <FontAwesomeIcon icon={faTimesCircle} size="lg" className="icon" onClick={toggle} />
+      <FontAwesomeIcon icon={faTimesCircle} size="lg" className={`${style.auth__close} icon`} onClick={toggle} />
       {showRegistration ? <SignUp toggleAuth={handleToggleAuth} toggle={toggle} /> : <SignIn toggleAuth={handleToggleAuth} toggle={toggle} />}
       {showRegistration ? <p className={`${style.auth__message} form__text`}>Already have an account? <span className="blue-text icon" onClick={handleToggleAuth}>Sign in.</span></p> : <p className={`${style.auth__message} form__text`}>Don't have an account? <span className="blue-text icon" onClick={handleToggleAuth}>Sign Up.</span></p>}
     </div>
