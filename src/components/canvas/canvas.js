@@ -5,10 +5,11 @@ import { v4 as uuid4 } from 'uuid';
 
 import List from '../list/list';
 import Modal from '../modal/modal';
+import SaveCanvas from '../save-canvas/saveCanvas';
 import { CanvasContext } from '../../context/CanvasContext';
 
 const Canvas = () => {
-  const { 
+  const {
     partners,
     setPartners,
     activities,
@@ -127,6 +128,7 @@ const Canvas = () => {
           <List name={canvasElements.REVENUE_STREAMS} showModal={showModalHandler} list={revenueStreams} />
         </div>
       </section>
+      {/* <SaveCanvas /> */}
       {selectedList ? <Modal listName={selectedList} modalClosed={handleModalClose} addCard={addCardHandler} /> : null}
     </Fragment>
   )
