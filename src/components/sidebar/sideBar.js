@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 
 import { UserContext } from '../../context/UserContext';
-import UserCard from '../userCard/userCard';
+import UserCard from '../user-card/userCard';
 
 
 const SideBar = ({ toggle, isOpen }) => {
