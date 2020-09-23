@@ -5,8 +5,10 @@ import { v4 as uuid4 } from 'uuid';
 
 import List from '../list/list';
 import Modal from '../modal/modal';
+import Auth from '../auth/auth';
 import SaveCanvas from '../save-canvas/saveCanvas';
 import { CanvasContext } from '../../context/CanvasContext';
+import { UiControlsContext } from '../../context/UIControlsContext';
 
 const Canvas = () => {
   const {
@@ -28,6 +30,7 @@ const Canvas = () => {
     setCostStructure,
     revenueStreams,
     setRevenueStreams } = useContext(CanvasContext);
+  const { displaySaveModal, displayAuth } = useContext(UiControlsContext);
 
   const [selectedList, setSelectedList] = useState(undefined);
 
@@ -128,8 +131,9 @@ const Canvas = () => {
           <List name={canvasElements.REVENUE_STREAMS} showModal={showModalHandler} list={revenueStreams} />
         </div>
       </section>
-      {/* <SaveCanvas /> */}
-      {selectedList ? <Modal listName={selectedList} modalClosed={handleModalClose} addCard={addCardHandler} /> : null}
+      {displaySaveModal && <SaveCanvas />}
+      {selectedList && <Modal listName={selectedList} modalClosed={handleModalClose} addCard={addCardHandler} />}
+      {displayAuth && <Auth />}
     </Fragment>
   )
 }

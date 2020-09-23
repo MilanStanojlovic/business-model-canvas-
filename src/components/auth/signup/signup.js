@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { auth, db } from '../../../firebase';
 import useForm from '../../../hooks/useForm';
 import { form } from '../../../enum/form';
+import { UiControlsContext } from '../../../context/UIControlsContext';
 
-const SignUp = ({ toggle }) => {
+const SignUp = () => {
   const [error, setError] = useState('');
+  const { toggleAuth } = useContext(UiControlsContext);
 
   const signUpHandler = () => {
     auth.createUserWithEmailAndPassword(values.email, values.password).then(response => {
@@ -17,7 +19,7 @@ const SignUp = ({ toggle }) => {
         fullName: values.fullName
       })
 
-      toggle();
+      toggleAuth();
     }, error => {
       setError(error.message);
     });

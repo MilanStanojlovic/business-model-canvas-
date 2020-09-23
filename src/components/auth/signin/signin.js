@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { auth } from '../../../firebase';
 import useForm from '../../../hooks/useForm';
 import { form } from '../../../enum/form';
+import { UiControlsContext } from '../../../context/UIControlsContext';
 
-const SignIn = ({ toggle }) => {
+const SignIn = () => {
   const [error, setError] = useState('');
+  const { toggleAuth } = useContext(UiControlsContext);
 
   const signInHandler = () => {
     auth.signInWithEmailAndPassword(values.email, values.password).then(() => {
-      toggle();
+      toggleAuth();
     }, error => {
       setError(error.message);
     });
