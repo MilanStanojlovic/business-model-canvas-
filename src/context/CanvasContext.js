@@ -3,6 +3,7 @@ import React, { useState, createContext } from 'react';
 export const CanvasContext = createContext();
 
 export const CanvasProvider = ({ children }) => {
+  const [canvasName, setCanvasName] = useState('');
   const [partners, setPartners] = useState([]);
   const [activities, setActivities] = useState([]);
   const [resources, setResources] = useState([]);
@@ -12,6 +13,11 @@ export const CanvasProvider = ({ children }) => {
   const [customerSegments, setCustomerSegments] = useState([]);
   const [costStructure, setCostStructure] = useState([]);
   const [revenueStreams, setRevenueStreams] = useState([]);
+
+  const saveCanvas = (event) => {
+    event.preventDefault();
+    console.log(canvasName);
+  }
 
   return (
     <CanvasContext.Provider value={{
@@ -32,7 +38,10 @@ export const CanvasProvider = ({ children }) => {
       costStructure,
       setCostStructure,
       revenueStreams,
-      setRevenueStreams
+      setRevenueStreams,
+      canvasName,
+      setCanvasName,
+      saveCanvas
     }}>
       {children}
     </CanvasContext.Provider>
