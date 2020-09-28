@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import style from './sideBar.module.scss';
 
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
+import { data } from '../../enum/data';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
@@ -12,6 +13,9 @@ import UserCard from '../user-card/userCard';
 
 const SideBar = ({ toggle, isOpen }) => {
   // SIDEBAR OF CANVAS WITH LIST OF PREVIOUSLY CREATED CANVSES
+  //TODO: canvases loaded and displayed in sidebar displayed in sidebar
+  //TODO: option to delete canvas
+  //TODO: option to rename canvas
   const { user, setUser } = useContext(UserContext);
   let openSidebar;
   if (isOpen) {
@@ -28,6 +32,19 @@ const SideBar = ({ toggle, isOpen }) => {
       console.log(error);
     });
   }
+
+  useEffect(() => {
+    if (user !== null && user.uid !== undefined) {
+      console.log(user.uid);
+      db.collection(data.collections.MODELS).where(data.fields.USER_ID, '==', user.uid).get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          console.log(doc.id, ' -> ', doc.data());
+        })
+      }, error => {
+        console.log(error);
+      })
+    }
+  }, [user]);
 
   return (
     <aside className={`${style.sideBar} ${openSidebar}`} >
