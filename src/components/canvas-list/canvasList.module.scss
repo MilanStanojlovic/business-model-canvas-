@@ -1,0 +1,11 @@
+@import '../../styles/variables/variables.scss';
+
+.canvasList {
+  border-top: 1px solid $lightGray;
+  border-bottom: 1px solid $lightGray;
+
+  &__header {
+    padding: 10px;
+    font-weight: 500;
+  }
+}

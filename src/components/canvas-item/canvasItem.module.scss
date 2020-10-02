@@ -1,0 +1,19 @@
+@import '../../styles/variables/variables.scss';
+
+.canvasItem {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  &__icon {
+    visibility: hidden;
+  }
+
+  &:hover &__icon {
+    visibility: visible;
+  }
+
+  &:hover {
+    background-color: $lightGray;
+  }
+}
