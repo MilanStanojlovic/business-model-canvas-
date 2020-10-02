@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import style from './sideBar.module.scss';
 
 import { auth, db } from '../../firebase';
@@ -9,6 +9,7 @@ import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 
 import { UserContext } from '../../context/UserContext';
 import UserCard from '../user-card/userCard';
+import CanvasList from '../canvas-list/canvasList';
 
 
 const SideBar = ({ toggle, isOpen }) => {
@@ -17,6 +18,8 @@ const SideBar = ({ toggle, isOpen }) => {
   //TODO: option to delete canvas
   //TODO: option to rename canvas
   const { user, setUser } = useContext(UserContext);
+  const [canvasItems, setCanvasItems] = useState([]);
+
   let openSidebar;
   if (isOpen) {
     openSidebar = style.open;
@@ -35,11 +38,19 @@ const SideBar = ({ toggle, isOpen }) => {
 
   useEffect(() => {
     if (user !== null && user.uid !== undefined) {
-      console.log(user.uid);
+      // console.log(user.uid);
       db.collection(data.collections.MODELS).where(data.fields.USER_ID, '==', user.uid).get().then(querySnapshot => {
+        const canvasList = [];
         querySnapshot.forEach(doc => {
-          console.log(doc.id, ' -> ', doc.data());
+          const canvas = {
+            canvasId: doc.id,
+            canvasName: doc.data().name
+          }
+          canvasList.push(canvas);
+          // console.log(canvases);
         })
+        // console.log(canvasList);
+        setCanvasItems(canvasList);
       }, error => {
         console.log(error);
       })
@@ -54,6 +65,7 @@ const SideBar = ({ toggle, isOpen }) => {
       <div>
         {/* {user ? <div className="btn btn-secondary">{user.email} {user.displayName}</div> : <p>login</p>} */}
         {user && <UserCard email={user.email} displayName={user.displayName} />}
+        <CanvasList canvasItems={canvasItems} />
         <div className="btn btn-secondary">Settings</div>
         <div className="btn btn-secondary">Dark Mode</div>
         <div className="btn btn-secondary" onClick={logOutHandler}>Log Out</div>
