@@ -51,7 +51,7 @@ export const CanvasProvider = ({ children }) => {
         revenueStreams: revenueStreams
       }
     });
-    // toggleSave();
+    toggleSave();
   }
 
   return (

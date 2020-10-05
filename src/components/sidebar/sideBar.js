@@ -37,7 +37,7 @@ const SideBar = ({ toggle, isOpen }) => {
   }
 
   useEffect(() => {
-    if (user !== null && user.uid !== undefined) {
+    if (user !== null && user.uid !== undefined && isOpen) {
       // console.log(user.uid);
       db.collection(data.collections.MODELS).where(data.fields.USER_ID, '==', user.uid).get().then(querySnapshot => {
         const canvasList = [];
@@ -55,7 +55,7 @@ const SideBar = ({ toggle, isOpen }) => {
         console.log(error);
       })
     }
-  }, [user]);
+  }, [user, isOpen]);
 
   return (
     <aside className={`${style.sideBar} ${openSidebar}`} >
