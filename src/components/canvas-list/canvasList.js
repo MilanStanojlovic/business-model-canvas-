@@ -15,7 +15,7 @@ const CanvasList = React.memo(({ canvasItems }) => {
       <div className={style.canvasList__header}>
         Canvases
       </div>
-      <div>
+      <div className={style.canvasList__list}>
         {canvasesTemplate}
       </div>
     </div>

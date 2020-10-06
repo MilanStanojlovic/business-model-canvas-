@@ -4,6 +4,11 @@
   border-top: 1px solid $lightGray;
   border-bottom: 1px solid $lightGray;
 
+  &__list {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
   &__header {
     padding: 10px;
     font-weight: 500;
