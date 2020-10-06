@@ -1,9 +1,10 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
 import { UiControlsContext } from './UIControlsContext';
 import { UserContext } from './UserContext';
 
 import { db } from '../firebase';
+import { data } from '../enum/data';
 
 export const CanvasContext = createContext();
 
@@ -19,8 +20,31 @@ export const CanvasProvider = ({ children }) => {
   const [costStructure, setCostStructure] = useState([]);
   const [revenueStreams, setRevenueStreams] = useState([]);
 
+  const [canvases, setCanvases] = useState([]);
+
   const { toggleSave } = useContext(UiControlsContext);
   const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    if (user !== null && user.uid !== undefined) {
+      // console.log(user.uid);
+      db.collection(data.collections.MODELS).where(data.fields.USER_ID, '==', user.uid).get().then(querySnapshot => {
+        const canvasList = [];
+        querySnapshot.forEach(doc => {
+          const canvas = {
+            canvasId: doc.id,
+            canvasName: doc.data().name,
+            canvas: doc.data().canvas
+          }
+          canvasList.push(canvas);
+          // console.log(canvases);
+        })
+        setCanvases(canvasList);
+      }, error => {
+        console.log(error);
+      })
+    }
+  }, [user]);
 
   const saveCanvas = (event) => {
     event.preventDefault();
@@ -76,7 +100,8 @@ export const CanvasProvider = ({ children }) => {
       setRevenueStreams,
       canvasName,
       setCanvasName,
-      saveCanvas
+      saveCanvas,
+      canvases
     }}>
       {children}
     </CanvasContext.Provider>
