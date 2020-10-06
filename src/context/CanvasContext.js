@@ -46,6 +46,15 @@ export const CanvasProvider = ({ children }) => {
     }
   }, [user]);
 
+  const deleteCanvas = (canvasId) => {
+    //logic for deleting canvases
+    console.log(canvasId);
+  }
+
+  const renameCanvas = (canvasId) => {
+    console.log(canvasId);
+  }
+
   const saveCanvas = (event) => {
     event.preventDefault();
     // console.log('CanvasName: ', canvasName);
@@ -101,7 +110,9 @@ export const CanvasProvider = ({ children }) => {
       canvasName,
       setCanvasName,
       saveCanvas,
-      canvases
+      canvases,
+      deleteCanvas,
+      renameCanvas
     }}>
       {children}
     </CanvasContext.Provider>

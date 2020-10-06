@@ -9,8 +9,21 @@
     visibility: hidden;
   }
 
+  &__name {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+
   &:hover &__icon {
     visibility: visible;
+  }
+
+  &__controls {
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
   }
 
   &:hover {
