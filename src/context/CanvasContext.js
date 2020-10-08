@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext, useEffect } from 'react';
+import React, { useState, createContext, useContext, useEffect, useCallback } from 'react';
 
 import { UiControlsContext } from './UIControlsContext';
 import { UserContext } from './UserContext';
@@ -46,10 +46,23 @@ export const CanvasProvider = ({ children }) => {
     }
   }, [user]);
 
-  const deleteCanvas = (canvasId) => {
+  const deleteCanvas = useCallback((canvasId) => {
     //logic for deleting canvases
-    console.log(canvasId);
-  }
+    // console.log(canvasId);
+    db.collection(data.collections.MODELS).doc(canvasId).delete().then(() => {
+      const temp = [...canvases];
+      temp.forEach((element, index) => {
+        if(element.canvasId === canvasId){
+          temp.splice(index, 1);
+          setCanvases(temp);
+        }
+      console.log('deleted from firebase');
+      });
+    }, error => {
+      console.log('error', error);
+    })
+    
+  }, [canvases])
 
   const renameCanvas = (canvasId) => {
     console.log(canvasId);

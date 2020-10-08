@@ -7,7 +7,7 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { CanvasContext } from '../../context/CanvasContext';
 
-const CanvasItem = ({ canvasName, canvasId }) => {
+const CanvasItem = React.memo(({ canvasName, canvasId }) => {
   const { deleteCanvas, renameCanvas } = useContext(CanvasContext);
 
   return (
@@ -25,6 +25,6 @@ const CanvasItem = ({ canvasName, canvasId }) => {
 
     </div>
   )
-}
+})
 
 export default CanvasItem;
