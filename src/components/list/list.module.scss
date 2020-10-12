@@ -7,7 +7,6 @@
 
   &__top {
     display: flex;
-    margin-bottom: 5px;
   }
 
   &__heading {
@@ -21,6 +20,7 @@
 
   &__content {
     position: relative;
+    padding-top: 5px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
       display: none;

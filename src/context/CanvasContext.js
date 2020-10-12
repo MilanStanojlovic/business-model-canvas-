@@ -68,6 +68,11 @@ export const CanvasProvider = ({ children }) => {
     console.log(canvasId);
   }
 
+  const deleteCanvasCard = (cardId, listName) => {
+    //TODO ADD LIST TAGS THAT MATCH STATE NAMES FOR EASIER DELETING
+    console.log('Deleting canvas card: ', cardId , 'from ', listName);
+  }
+
   const saveCanvas = (event) => {
     event.preventDefault();
     // console.log('CanvasName: ', canvasName);
@@ -125,7 +130,8 @@ export const CanvasProvider = ({ children }) => {
       saveCanvas,
       canvases,
       deleteCanvas,
-      renameCanvas
+      renameCanvas, 
+      deleteCanvasCard
     }}>
       {children}
     </CanvasContext.Provider>

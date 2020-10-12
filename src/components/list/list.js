@@ -12,7 +12,7 @@ const List = React.memo(({ name, showModal, list }) => {
 
   if (list) {
     content = list.map(element => {
-      return <CanvasCard key={element.id} id={element.id} content={element.content} color={element.color} />
+      return <CanvasCard key={element.id} id={element.id} parentList={name} content={element.content} color={element.color} />
     })
   }
 
