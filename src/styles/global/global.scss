@@ -35,6 +35,24 @@
   color: $blue;
 }
 
+.tooltip {
+  position: relative;
+
+  &__text {
+    position: absolute;
+    top: 30px;
+    right: 5px;
+    padding: 5px 10px;
+    background-color: $black;
+    color: $white;
+    visibility: hidden;
+  }
+
+  &:hover &__text{
+    visibility: visible;
+  }
+}
+
 .logo {
   font-family: 'Fredoka One', cursive;
   color: $white;
