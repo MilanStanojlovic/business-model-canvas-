@@ -5,6 +5,7 @@ import { UserContext } from './UserContext';
 
 import { db } from '../firebase';
 import { data } from '../enum/data';
+import { canvasElements } from '../enum/canvas';
 
 export const CanvasContext = createContext();
 
@@ -68,9 +69,30 @@ export const CanvasProvider = ({ children }) => {
     console.log(canvasId);
   }
 
-  const deleteCanvasCard = (cardId, listName) => {
+  const deleteCanvasCard = (cardId, listTag) => {
     //TODO ADD LIST TAGS THAT MATCH STATE NAMES FOR EASIER DELETING
-    console.log('Deleting canvas card: ', cardId , 'from ', listName);
+    console.log('Deleting canvas card: ', cardId , 'from ', listTag);
+    switch (listTag) {
+        case canvasElements.KEY_PARTNERS.tag: console.log('deleting from list: ', canvasElements.KEY_PARTNERS.tag);
+          break;
+        case canvasElements.KEY_ACTIVITIES.tag: console.log('deleting from list: ', canvasElements.KEY_ACTIVITIES.tag);
+          break;
+        case canvasElements.KEY_RESOURCES.tag: console.log('deleting from list: ', canvasElements.KEY_RESOURCES.tag);
+          break;
+        case canvasElements.VALUE_PROPOSITION.tag: console.log('deleting from list: ', canvasElements.VALUE_PROPOSITION.tag);
+          break;
+        case canvasElements.CUSTOMER_RELATIONSHIPS.tag: console.log('deleting from list: ', canvasElements.CUSTOMER_RELATIONSHIPS.tag);
+          break;
+        case canvasElements.CHANELS.tag: console.log('deleting from list: ', canvasElements.CHANELS.tag);
+          break;
+        case canvasElements.CUSTOMER_SEGMENTS.tag: console.log('deleting from list: ', canvasElements.CUSTOMER_SEGMENTS.tag);
+          break;
+        case canvasElements.COST_STRUCTURE.tag: console.log('deleting from list: ', canvasElements.COST_STRUCTURE.tag);
+          break;
+        case canvasElements.REVENUE_STREAMS.tag: console.log('deleting from list: ', canvasElements.REVENUE_STREAMS.tag);
+          break;
+        default: throw new Error('Unknown list error.');
+    }
   }
 
   const saveCanvas = (event) => {
