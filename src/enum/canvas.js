@@ -1,13 +1,13 @@
 export const canvasElements = {
-  KEY_PARTNERS: 'Key Partners',
-  KEY_ACTIVITIES: 'Key Activities',
-  KEY_RESOURCES: 'Key Resources',
-  VALUE_PROPOSITION: 'Value Proposition',
-  CUSTOMER_RELATIONSHIPS: 'Customer Relatinships',
-  CHANELS: 'Chanels',
-  CUSTOMER_SEGMENTS: 'Customer Segments',
-  COST_STRUCTURE: 'Cost structure',
-  REVENUE_STREAMS: 'Revenue Streams'
+  KEY_PARTNERS: { name: 'Key Partners', tag: 'partners' },
+  KEY_ACTIVITIES: { name: 'Key Activities', tag: 'activities' },
+  KEY_RESOURCES: { name: 'Key Resources', tag: 'resources' },
+  VALUE_PROPOSITION: { name: 'Value Proposition', tag: 'values' },
+  CUSTOMER_RELATIONSHIPS: { name: 'Customer Relatinships', tag: 'customerRelationships' },
+  CHANELS: { name: 'Chanels', tag: 'chanels' },
+  CUSTOMER_SEGMENTS: { name: 'Customer Segments', tag: 'customerSegments' },
+  COST_STRUCTURE: { name: 'Cost structure', tag: 'costStructure' },
+  REVENUE_STREAMS: { name: 'Revenue Streams', tag: 'revenueStreams' }
 }
 
 //TODO:

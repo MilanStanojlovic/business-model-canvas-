@@ -6,13 +6,13 @@ import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import CanvasCard from '../canvas-card/canvasCard';
 import { canvasElements } from '../../enum/canvas';
 
-const List = React.memo(({ name, showModal, list }) => {
+const List = React.memo(({ name, showModal, list, tag }) => {
   let content = null;
   let listSize = style.list_md;
 
   if (list) {
     content = list.map(element => {
-      return <CanvasCard key={element.id} id={element.id} parentList={name} content={element.content} color={element.color} />
+      return <CanvasCard key={element.id} id={element.id} listTag={tag} parentList={name} content={element.content} color={element.color} />
     })
   }
 

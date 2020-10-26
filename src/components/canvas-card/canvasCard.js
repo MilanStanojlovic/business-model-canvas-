@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 import { CanvasContext } from '../../context/CanvasContext';
 
-const CanvasCard = ({ content, color, id, parentList }) => {
+const CanvasCard = ({ content, color, id, parentList, listTag }) => {
   const { deleteCanvasCard } = useContext(CanvasContext);
 
   return (
     <div className={style.canvasCard} style={{ backgroundColor: `#${color}` }}>
       {content}
-      <span className={style.canvasCard__icon} onClick={deleteCanvasCard.bind(this, id, parentList)}>
+      <span className={style.canvasCard__icon} onClick={deleteCanvasCard.bind(this, id, listTag)}>
         <FontAwesomeIcon icon={faTimesCircle} size="sm" />
       </span>
     </div>
