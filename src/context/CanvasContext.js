@@ -53,45 +53,53 @@ export const CanvasProvider = ({ children }) => {
     db.collection(data.collections.MODELS).doc(canvasId).delete().then(() => {
       const temp = [...canvases];
       temp.forEach((element, index) => {
-        if(element.canvasId === canvasId){
+        if (element.canvasId === canvasId) {
           temp.splice(index, 1);
           setCanvases(temp);
         }
-      console.log('deleted from firebase');
+        console.log('deleted from firebase');
       });
     }, error => {
       console.log('error', error);
     })
-    
+
   }, [canvases])
 
   const renameCanvas = (canvasId) => {
     console.log(canvasId);
   }
 
+  const deleteCard = useCallback((cardId, list) => {
+    const temp = [...list];
+    temp.forEach((element, index) => {
+      if (element.id === cardId) {
+        temp.splice(index, 1);
+      }
+    })
+    return temp;
+  }, [])
+
   const deleteCanvasCard = (cardId, listTag) => {
-    //TODO ADD LIST TAGS THAT MATCH STATE NAMES FOR EASIER DELETING
-    console.log('Deleting canvas card: ', cardId , 'from ', listTag);
     switch (listTag) {
-        case canvasElements.KEY_PARTNERS.tag: console.log('deleting from list: ', canvasElements.KEY_PARTNERS.tag);
-          break;
-        case canvasElements.KEY_ACTIVITIES.tag: console.log('deleting from list: ', canvasElements.KEY_ACTIVITIES.tag);
-          break;
-        case canvasElements.KEY_RESOURCES.tag: console.log('deleting from list: ', canvasElements.KEY_RESOURCES.tag);
-          break;
-        case canvasElements.VALUE_PROPOSITION.tag: console.log('deleting from list: ', canvasElements.VALUE_PROPOSITION.tag);
-          break;
-        case canvasElements.CUSTOMER_RELATIONSHIPS.tag: console.log('deleting from list: ', canvasElements.CUSTOMER_RELATIONSHIPS.tag);
-          break;
-        case canvasElements.CHANELS.tag: console.log('deleting from list: ', canvasElements.CHANELS.tag);
-          break;
-        case canvasElements.CUSTOMER_SEGMENTS.tag: console.log('deleting from list: ', canvasElements.CUSTOMER_SEGMENTS.tag);
-          break;
-        case canvasElements.COST_STRUCTURE.tag: console.log('deleting from list: ', canvasElements.COST_STRUCTURE.tag);
-          break;
-        case canvasElements.REVENUE_STREAMS.tag: console.log('deleting from list: ', canvasElements.REVENUE_STREAMS.tag);
-          break;
-        default: throw new Error('Unknown list error.');
+      case canvasElements.KEY_PARTNERS.tag: setPartners(deleteCard(cardId, partners));
+        break;
+      case canvasElements.KEY_ACTIVITIES.tag: setActivities(deleteCard(cardId, activities));
+        break;
+      case canvasElements.KEY_RESOURCES.tag: setResources(deleteCard(cardId, resources));
+        break;
+      case canvasElements.VALUE_PROPOSITION.tag: setValues(deleteCard(cardId, values))
+        break;
+      case canvasElements.CUSTOMER_RELATIONSHIPS.tag: setCustomerRelationships(deleteCard(cardId, customerRelationships))
+        break;
+      case canvasElements.CHANELS.tag: setChanels(deleteCard(cardId, chanels))
+        break;
+      case canvasElements.CUSTOMER_SEGMENTS.tag: setCustomerSegments(deleteCard(cardId, customerSegments))
+        break;
+      case canvasElements.COST_STRUCTURE.tag: setCostStructure(deleteCard(cardId, costStructure))
+        break;
+      case canvasElements.REVENUE_STREAMS.tag: setRevenueStreams(deleteCard(cardId, revenueStreams))
+        break;
+      default: throw new Error('Unknown list error.');
     }
   }
 
@@ -152,7 +160,7 @@ export const CanvasProvider = ({ children }) => {
       saveCanvas,
       canvases,
       deleteCanvas,
-      renameCanvas, 
+      renameCanvas,
       deleteCanvasCard
     }}>
       {children}
